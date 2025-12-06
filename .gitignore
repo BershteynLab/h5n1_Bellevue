@@ -34,6 +34,9 @@ Thumbs.db
 *.html
 *.pdf
 !docs/*.pdf
+# Allow processed maps for sharing
+!data/processed/*.html
+!data/processed/*.png
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
