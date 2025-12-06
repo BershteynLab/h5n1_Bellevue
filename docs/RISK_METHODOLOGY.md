@@ -1,7 +1,5 @@
 # H5N1 Risk Mapping Methodology
 
-## Executive Summary
-
 This document explains the methodology used to calculate H5N1 (Avian Influenza) risk scores for NYC zip codes. The approach combines multiple epidemiological risk factors into a composite risk score that identifies areas most vulnerable to H5N1 outbreaks.
 
 ## Data Sources Summary
