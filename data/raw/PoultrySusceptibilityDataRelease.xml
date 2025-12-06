@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<metadata>
+  <idinfo>
+    <citation>
+      <citeinfo>
+        <origin>Cody M. Kent</origin>
+        <origin>Jeffery D. Sullivan</origin>
+        <origin>Diann J. Prosser</origin>
+        <pubdate>20220810</pubdate>
+        <title>Relative susceptibility of poultry to the transmission of Avian Influenza from wild birds based upon poultry type and density</title>
+        <geoform>raster digital data</geoform>
+        <pubinfo>
+          <pubplace>Reston, VA</pubplace>
+          <publish>U.S. Geological Survey</publish>
+        </pubinfo>
+        <onlink>https://doi.org/10.5066/P94BT78I</onlink>
+      </citeinfo>
+    </citation>
+    <descript>
+      <abstract>This data layer depicts the relative susceptibility of poultry to the transmission of Avian Influenza from wild birds based upon poultry type and density for the contiguous United States.</abstract>
+      <purpose>These data are produced to support an online viewing interface that allows stakeholders to see how key variables impact avian influenza transmission risk estimates.</purpose>
+    </descript>
+    <timeperd>
+      <timeinfo>
+        <sngdate>
+          <caldate>2022</caldate>
+        </sngdate>
+      </timeinfo>
+      <current>publication date</current>
+    </timeperd>
+    <status>
+      <progress>Complete</progress>
+      <update>None planned</update>
+    </status>
+    <spdom>
+      <descgeog>Continental United States</descgeog>
+      <bounding>
+        <westbc>-124.8490</westbc>
+        <eastbc>-66.8827</eastbc>
+        <northbc>49.3845</northbc>
+        <southbc>24.3963</southbc>
+      </bounding>
+    </spdom>
+    <keywords>
+      <theme>
+        <themekt>ISO 19115 Topic Category</themekt>
+        <themekey>biota</themekey>
+      </theme>
+      <theme>
+        <themekt>None</themekt>
+        <themekey>domestic poultry</themekey>
+      </theme>
+      <theme>
+        <themekt>USGS Metadata Identifier</themekt>
+        <themekey>USGS:62e2c58cd34e394b65364ed5</themekey>
+      </theme>
+      <place>
+        <placekt>None</placekt>
+        <placekey>United States</placekey>
+      </place>
+    </keywords>
+    <accconst>None.  Please see 'Distribution Info' for details.</accconst>
+    <useconst>None.  Users are advised to read the dataset's metadata thoroughly to understand appropriate use and data limitations.</useconst>
+    <ptcontac>
+      <cntinfo>
+        <cntperp>
+          <cntper>Diann J Prosser</cntper>
+          <cntorg>U.S. Geological Survey, Northeast Region</cntorg>
+        </cntperp>
+        <cntpos>Biologist</cntpos>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>12100 Beech Forest Road</address>
+          <city>Laurel</city>
+          <state>MD</state>
+          <postal>20708</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>301-497-5914</cntvoice>
+        <cntemail>dprosser@usgs.gov</cntemail>
+      </cntinfo>
+    </ptcontac>
+    <datacred>This research was supported by the U.S. Geological Survey Ecosystems Mission Area and USDA's Animal and Plant Health Inspection Service under Cooperative Agreement 6000001762.</datacred>
+    <native>These data can be used in any software suitable for processing geospatial files including but not limited to ArcGIS, QGIS, and R.</native>
+  </idinfo>
+  <dataqual>
+    <attracc>
+      <attraccr>The has been no formal accuracy validation.</attraccr>
+    </attracc>
+    <logic>No formal evaluation of consistency has been conducted.</logic>
+    <complete>The data are believed to be fully representative.</complete>
+    <lineage>
+      <srcinfo>
+        <srccite>
+          <citeinfo>
+            <origin>Kelly A. Patyk</origin>
+            <origin>Mary J. McCool-Eye</origin>
+            <origin>David D. South</origin>
+            <origin>Christopher L. Burdett</origin>
+            <origin>Susan A. Maroney</origin>
+            <origin>Andrew Fox</origin>
+            <origin>Grace Kuiper</origin>
+            <origin>Sheryl Magzamen</origin>
+            <pubdate>2020</pubdate>
+            <title>Modelling the domestic poultry population in the United States: A novel approach leveraging remote sensing and synthetic data methods</title>
+            <geoform>publication</geoform>
+            <pubinfo>
+              <pubplace>GeoSpatial Health</pubplace>
+              <publish>PagePress</publish>
+            </pubinfo>
+            <onlink>https://doi.org/10.4081/gh.2020.913</onlink>
+          </citeinfo>
+        </srccite>
+        <typesrc>Digital and/or Hardcopy</typesrc>
+        <srctime>
+          <timeinfo>
+            <sngdate>
+              <caldate>2020</caldate>
+            </sngdate>
+          </timeinfo>
+          <srccurr>publication date</srccurr>
+        </srctime>
+        <srccitea>Hybrid Poultry Model</srccitea>
+        <srccontr>Provides farm locations</srccontr>
+      </srcinfo>
+      <procstep>
+        <procdesc>First we identified poultry farm locations as identified by the “Hybrid Poultry Model” developed by the USDA. This model combines a poultry farm suitability surface with data from the Agricultural Census on farm numbers and types to stochastically place likely farm locations and assign them a farm type (size/species/commodity). Though there are likely some changes in poultry production numbers throughout the year, these are static spatial data and have no temporal component. 
+
+We then applied a simple weighting system of the relative susceptibility of different poultry farm types that we created from values available in the literature. These values are just a simple table, and based off the species (chicken or turkey), commodity type (broilers, layers, pullets), farm category (commercial or backyard), and sector (production or breeding). These metrics represent some composite of the differential risks due to species, commodity lifespan, and biosecurity measures.</procdesc>
+        <srcused>Hybrid Poultry Model</srcused>
+        <procdate>2022</procdate>
+      </procstep>
+    </lineage>
+  </dataqual>
+  <spdoinfo>
+    <direct>Raster</direct>
+    <rastinfo>
+      <rasttype>Grid Cell</rasttype>
+      <rowcount>4000</rowcount>
+      <colcount>4000</colcount>
+      <vrtcount>1</vrtcount>
+    </rastinfo>
+  </spdoinfo>
+  <spref>
+    <horizsys>
+      <local>
+        <localdes>GCS_North_American_1983</localdes>
+        <localgeo>NA</localgeo>
+      </local>
+    </horizsys>
+  </spref>
+  <eainfo>
+    <detailed>
+      <enttyp>
+        <enttypl>Poultry.tif</enttypl>
+        <enttypd>Raster geospatial data file.</enttypd>
+        <enttypds>Producer Defined</enttypds>
+      </enttyp>
+      <attr>
+        <attrlabl>Value</attrlabl>
+        <attrdef>A value representing the cumulative susceptibility of domestic poultry within a county to avian influenza transmission from wild waterfowl.</attrdef>
+        <attrdefs>Producer Defined</attrdefs>
+        <attrdomv>
+          <rdom>
+            <rdommin>1.0</rdommin>
+            <rdommax>3108.0</rdommax>
+          </rdom>
+        </attrdomv>
+      </attr>
+    </detailed>
+  </eainfo>
+  <distinfo>
+    <distrib>
+      <cntinfo>
+        <cntperp>
+          <cntper>GS ScienceBase</cntper>
+          <cntorg>U.S. Geological Survey</cntorg>
+        </cntperp>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+          <city>Denver</city>
+          <state>CO</state>
+          <postal>80225</postal>
+          <country>United States</country>
+        </cntaddr>
+        <cntvoice>1-888-275-8747</cntvoice>
+        <cntemail>sciencebase@usgs.gov</cntemail>
+      </cntinfo>
+    </distrib>
+    <distliab>Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected. Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS), no warranty expressed or implied is made regarding the display or utility of the data for other purposes, nor on all computer systems, nor shall the act of distribution constitute any such warranty.</distliab>
+    <stdorder>
+      <digform>
+        <digtinfo>
+          <formname>Digital Data</formname>
+        </digtinfo>
+        <digtopt>
+          <onlinopt>
+            <computer>
+              <networka>
+                <networkr>https://doi.org/10.5066/P94BT78I</networkr>
+              </networka>
+            </computer>
+          </onlinopt>
+        </digtopt>
+      </digform>
+      <fees>None</fees>
+    </stdorder>
+  </distinfo>
+  <metainfo>
+    <metd>20220810</metd>
+    <metc>
+      <cntinfo>
+        <cntperp>
+          <cntper>Diann J Prosser</cntper>
+          <cntorg>U.S. Geological Survey, Northeast Region</cntorg>
+        </cntperp>
+        <cntpos>Biologist</cntpos>
+        <cntaddr>
+          <addrtype>mailing address</addrtype>
+          <address>12100 Beech Forest Road</address>
+          <city>Laurel</city>
+          <state>MD</state>
+          <postal>20708</postal>
+          <country>US</country>
+        </cntaddr>
+        <cntvoice>301-497-5914</cntvoice>
+        <cntemail>dprosser@usgs.gov</cntemail>
+      </cntinfo>
+    </metc>
+    <metstdn>FGDC Biological Data Profile of the Content Standard for Digital Geospatial Metadata</metstdn>
+    <metstdv>FGDC-STD-001.1-1999</metstdv>
+  </metainfo>
+</metadata>
