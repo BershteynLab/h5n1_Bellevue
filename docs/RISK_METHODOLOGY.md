@@ -43,6 +43,12 @@ Where:
 - **High**: 0.5 - 0.75
 - **Very High**: 0.75 - 1.0
 
+**References:**
+- Si Y, de Boer WF, Gong P (2013) Different Environmental Drivers of Highly Pathogenic Avian Influenza H5N1 Outbreaks in Poultry and Wild Birds. PLoS ONE 8(1): e53362. https://doi.org/10.1371/journal.pone.0053362
+- Prosser DJ, Hungerford LL, Erwin RM, Ottinger MA, Takekawa JY, Ellis EC. Mapping avian influenza transmission risk at the interface of domestic poultry and wild birds. Front Public Health. 2013 Aug 30;1:28. doi: 10.3389/fpubh.2013.00028. 
+- Yamaguchi E, Hayama Y, Kondo S, Yamamoto T. Risk factors for highly pathogenic avian influenza outbreaks in Japan during 2022-2023 season identified by additive Bayesian network modeling. Sci Rep. 2025 Jul 23;15(1):26739. doi: 10.1038/s41598-025-13003-5. 
+- Fang L-Q, de Vlas SJ, Liang S, Looman CWN, Gong P, Xu B, et al. (2008) Environmental Factors Contributing to the Spread of H5N1 Avian Influenza in Mainland China. PLoS ONE 3(5): e2268. https://doi.org/10.1371/journal.pone.0002268
+
 ---
 
 ## Risk Factors and Rationale
@@ -58,7 +64,7 @@ Where:
   - Healthcare system burden
 
 **Epidemiological Evidence:**
-- Urban areas with high population density have shown faster disease spread in past pandemics (e.g., COVID-19, 1918 influenza)
+- Urban areas with high population density have shown faster disease spread in past pandemics
 - Contact networks are denser in urban settings, facilitating transmission
 - NYC's dense population makes it particularly vulnerable to rapid spread
 
@@ -74,9 +80,14 @@ Where:
   - Geographic boundaries for 178 NYC zip codes
   - Includes geometry for area calculations
 
+**References:**
+- Reyes R, Ahn R, Thurber K, Burke TF. Urbanization and Infectious Diseases: General Principles, Historical Perspectives, and Contemporary Challenges. Challenges in Infectious Diseases. 2012 May 19:123–46. doi: 10.1007/978-1-4614-4496-1_4.
+- Hazarie, S., Soriano-Paños, D., Arenas, A. et al. Interplay between population density and mobility in determining the spread of epidemics in cities. Commun Phys 4, 191 (2021). https://doi.org/10.1038/s42005-021-00679-0
+
+
 ---
 
-### 2. Bird/Poultry Density (Weight: 45%) ⭐ **HIGHEST PRIORITY**
+### 2. Bird/Poultry Density (Weight: 45%)  **HIGHEST PRIORITY**
 
 **Why it matters:**
 - **H5N1 is an avian influenza virus** - birds are the primary reservoir
@@ -116,6 +127,11 @@ Where:
   - Values range from 1.0 to 3,041 (higher = more susceptible)
   - Coverage: 169/178 zip codes (95%)
 
+**References:**
+- Keawcharoen J, van den Broek J, Bouma A, Tiensin T, Osterhaus AD, Heesterbeek H. Wild birds and increased transmission of highly pathogenic avian influenza (H5N1) among poultry, Thailand. Emerg Infect Dis. 2011 Jun;17(6):1016-22. doi: 10.3201/eid/1706.100880. 
+- Jindal M, Stone H, Lim S, MacIntyre CR. A Geospatial Perspective Toward the Role of Wild Bird Migrations and Global Poultry Trade in the Spread of Highly Pathogenic Avian Influenza H5N1. Geohealth. 2025 Mar 25;9(3):e2024GH001296. doi: 10.1029/2024GH001296. 
+- Gilbert, M., Golding, N., Zhou, H. et al. Predicting the risk of avian influenza A H7N9 infection in live-poultry markets across Asia. Nat Commun 5, 4116 (2014). https://doi.org/10.1038/ncomms5116
+- Velkers FC, Manders TTM, Vernooij JCM, Stahl J, Slaterus R, Stegeman JA. Association of wild bird densities around poultry farms with the risk of highly pathogenic avian influenza virus subtype H5N8 outbreaks in the Netherlands, 2016. Transbound Emerg Dis. 2021 Jan;68(1):76-87. doi: 10.1111/tbed.13595. Epub 2020 May 18.
 ---
 
 ### 3. Water Proximity (Weight: 15%)
@@ -147,6 +163,11 @@ Where:
   - `NHDArea.shp` - Water area polygons
   - Filtered to NYC bounding box for efficiency
   - Coverage: 100% (all 178 zip codes)
+
+**References:**
+- Hill SC, Lee YJ, Song BM, Kang HM, Lee EK, Hanna A, Gilbert M, Brown IH, Pybus OG. Wild waterfowl migration and domestic duck density shape the epidemiology of highly pathogenic H5N8 influenza in the Republic of Korea. Infect Genet Evol. 2015 Aug;34:267-77. doi: 10.1016/j.meegid.2015.06.014. Epub 2015 Jun 12.
+- Ahmad S, Koh K, Yoo D, Suh G, Lee J, Lee CM. Impact of inland waters on highly pathogenic avian influenza outbreaks in neighboring poultry farms in South Korea. J Vet Sci. 2022 Feb;23(3):e36. https://doi.org/10.4142/jvs.21278
+
 
 ---
 
@@ -182,6 +203,14 @@ Where:
   - Percentage of population without health insurance
   - Coverage: 177/178 zip codes (99.4%)
   - Note: This is a proxy for healthcare capacity; direct hospital data could be added in the future
+
+
+**References:**
+- Richardson S, Hirsch JS, Narasimhan M, et al. Presenting Characteristics, Comorbidities, and Outcomes Among 5700 Patients Hospitalized With COVID-19 in the New York City Area. JAMA. 2020;323(20):2052–2059. doi:10.1001/jama.2020.6775
+- Jarrett M, Garrick R, Gaeta A, Lombardi D, Mayo R, McNulty P, Panzer R, Krahn WD. Pandemic Preparedness: COVID-19 Lessons Learned in New York's Hospitals. Jt Comm J Qual Patient Saf. 2022 Sep;48(9):475-491. doi: 10.1016/j.jcjq.2022.06.002. Epub 2022 Jun 10. 
+- Wouter S. Hoogenboom, Antoine Pham, Harnadar Anand, Roman Fleysher, Alexandra Buczek, Selvin Soby, Parsa Mirhaji, Judy Yee, Tim Q. Duong, Clinical characteristics of the first and second COVID-19 waves in the Bronx, New York: A retrospective cohort study, The Lancet Regional Health - Americas, Volume 3, 2021, 100041, ISSN 2667-193X, https://doi.org/10.1016/j.lana.2021.100041.
+- Schaye V. E., Reich J. A., Bosworth B. P., Stern D. T., Volpicelli F., Shapiro N. M., Hauck K. D., Fagan I. M., Villagomez S. M., Uppal A., Sauthoff H., LoCurcio M., Cocks P. M., Bails D. B. (2020). Collaborating Across Private, Public, Community, and Federal Hospital Systems: Lessons Learned from the Covid-19 Pandemic Response in NYC. NEJM Catalyst Innovations in Care Delivery, 1(6). doi:10.1056/CAT.20.0343  
+
 
 ---
 
@@ -219,45 +248,13 @@ Where:
   - Rank percentile (0-100) normalized to 0-1
   - Coverage: 177/178 zip codes (99.4%)
 
----
-
-## Weight Selection Rationale
-
-### Why These Specific Weights?
-
-The weights were chosen based on:
-
-1. **Epidemiological Priority:**
-   - Poultry density (45%) - Primary transmission pathway for H5N1
-   - Population density (25%) - Secondary transmission and spread
-   - Water proximity (15%) - Wild bird reservoir proximity
-   - Healthcare (10%) - Response capability
-   - Vulnerability (5%) - Amplifying factors
-
-2. **H5N1-Specific Considerations:**
-   - Unlike general influenza, H5N1 requires bird-human interface
-   - Poultry density is the **necessary condition** for human risk
-   - Other factors modify risk but don't create it independently
-
-3. **Literature Review:**
-   - Studies on avian influenza risk consistently identify poultry density as primary factor
-   - Population density is important for all respiratory diseases
-   - Water proximity is specific to avian influenza ecology
-
-4. **Expert Consultation:**
-   - Weights reflect input from Bellevue Hospital Critical Care Unit
-   - Designed for rapid deployment and scenario modeling
-   - Can be adjusted based on new evidence
-
-### Weight Sensitivity
-
-The weights are **parameterizable** and can be adjusted for:
-- Different outbreak scenarios
-- New epidemiological evidence
-- Local conditions
-- Sensitivity analysis
+**References:**
+- Tosam MJ, Ambe JR, Chi PC. Global Emerging Pathogens, Poverty and Vulnerability: An Ethical Analysis. Socio-cultural Dimensions of Emerging Infectious Diseases in Africa. 2019 Mar 20:243–53. doi: 10.1007/978-3-030-17474-3_18. 
+- Yuan B, Huang X, Li J, He L. Socioeconomic disadvantages and vulnerability to the pandemic among children and youth: A macro-level investigation of American counties. Child Youth Serv Rev. 2022 May;136:106429. doi: 10.1016/j.childyouth.2022.106429. Epub 2022 Feb 23.
+- Mongin D, Cullati S, Kelly-Irving M, Rosselet M, Regard S, Courvoisier DS; Covid-SMC Study Group. Neighbourhood socio-economic vulnerability and access to COVID-19 healthcare during the first two waves of the pandemic in Geneva, Switzerland: A gender perspective. EClinicalMedicine. 2022 Mar 28;46:101352. doi: 10.1016/j.eclinm.2022.101352. 
 
 ---
+
 
 ## Normalization Methods
 
@@ -279,34 +276,8 @@ Normalized = (Value - Min) / (Max - Min)
 - Healthcare capacity
 - Vulnerability index
 
-### Z-Score Normalization (Alternative)
-
-For factors with normal distributions, z-scores can be used:
-```
-Z = (Value - Mean) / StdDev
-Normalized = 1 / (1 + exp(-Z))  # Sigmoid transformation
-```
-
-**Used when:**
-- Data has outliers
-- Distribution is not uniform
-- More robust normalization needed
 
 ---
-
-## Data Quality and Limitations
-
-### Current Data Status
-
-| Factor | Status | Coverage | Notes |
-|--------|--------|----------|-------|
-| Population | ✅ Complete | 100% | 2020 Census Decennial data |
-| Poultry | ✅ Complete | 95% | USGS raster, 169/178 zip codes |
-| Water Proximity | ✅ Complete | 100% | USGS NHD data |
-| Healthcare | ✅ Complete | 99.4% | CDC SVI healthcare access proxy |
-| Vulnerability | ✅ Complete | 99.4% | CDC SVI overall rank |
-
-**Overall Data Coverage: 100%** - All risk factors use real-world data from authoritative sources.
 
 ### Limitations
 
@@ -384,132 +355,3 @@ The framework supports scenario analysis:
 - Asymptomatic transmission
 
 ---
-
-## Comparison with Other Approaches
-
-### Alternative Methodologies
-
-1. **Machine Learning Models:**
-   - Could use historical outbreak data
-   - Requires large datasets
-   - Less interpretable
-
-2. **Compartmental Models (SEIR):**
-   - More detailed transmission dynamics
-   - Requires more parameters
-   - Computationally intensive
-
-3. **Agent-Based Models:**
-   - Individual-level interactions
-   - Very detailed but complex
-   - Requires extensive data
-
-### Why This Approach?
-
-1. **Rapid Deployment:**
-   - Can be implemented quickly
-   - Works with available data
-   - Easy to update
-
-2. **Interpretability:**
-   - Clear risk factors
-   - Transparent calculations
-   - Easy to explain to stakeholders
-
-3. **Flexibility:**
-   - Easy to adjust weights
-   - Can add/remove factors
-   - Supports scenario modeling
-
-4. **Practical:**
-   - Designed for public health use
-   - Actionable results
-   - Supports resource allocation
-
----
-
-## Future Enhancements
-
-### Potential Improvements
-
-1. **Enhanced Data:**
-   - Direct hospital capacity data (beds, ICU capacity) to replace SVI healthcare proxy
-   - Bird migration route data for seasonal risk variations
-   - Poultry facility locations (if available) for more granular poultry density
-   - Time-series data for temporal risk analysis
-
-2. **Temporal Analysis:**
-   - Seasonal risk variations (bird migration patterns)
-   - Time-series risk maps
-   - Dynamic risk updates as data changes
-
-3. **Advanced Modeling:**
-   - Integration with SEIR compartmental models
-   - Network analysis of transmission pathways
-   - Machine learning enhancements for pattern recognition
-   - Agent-based modeling for detailed transmission dynamics
-
-4. **Validation:**
-   - Comparison with historical outbreak data (if available)
-   - Expert panel review and calibration
-   - Sensitivity analysis of weights and factors
-   - Cross-validation with other risk assessment methods
-
----
-
-## References and Literature
-
-### Key Epidemiological Studies
-
-1. **Avian Influenza Transmission:**
-   - Poultry density as primary risk factor
-   - Wild bird migration patterns
-   - Human-poultry contact
-
-2. **Urban Disease Spread:**
-   - Population density and transmission
-   - Contact network analysis
-   - Healthcare system capacity
-
-3. **Risk Assessment Methods:**
-   - Composite risk indices
-   - Spatial risk mapping
-   - Scenario modeling
-
-### Data Sources
-
-- **US Census Bureau:**
-  - 2020 Decennial Census population data by ZCTA
-  - NYC Modified ZCTA boundaries (2025)
-  
-- **USGS:**
-  - Poultry Susceptibility Raster (2022) - DOI: 10.5066/P94BT78I
-  - National Hydrography Dataset (NHD) - Water bodies and flowlines
-  
-- **CDC:**
-  - Social Vulnerability Index (SVI) 2022 - ZCTA level
-  - Includes vulnerability ranks and healthcare access indicators
-  
-- **NYC Department of City Planning:**
-  - Modified ZCTA boundaries for NYC
-
----
-
-## Conclusion
-
-This risk mapping methodology provides a **practical, evidence-based approach** to identifying H5N1 risk areas in NYC. The framework:
-
-- ✅ Uses real epidemiological evidence
-- ✅ Prioritizes H5N1-specific factors (poultry density)
-- ✅ Is transparent and interpretable
-- ✅ Supports rapid deployment
-- ✅ Allows scenario modeling
-- ✅ Can be updated as new data becomes available
-
-The methodology is designed to support Bellevue Hospital's preparedness efforts and can be rapidly deployed if an H5N1 outbreak occurs.
-
----
-
-## Contact and Questions
-
-For questions about the methodology or to suggest improvements, please refer to the project documentation or contact the development team.
