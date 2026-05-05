@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5N1 Risk Map - Component Maps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .map-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 25px 20px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .map-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .map-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .map-button.early-outbreak {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+        
+        .map-button.early-outbreak:hover {
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+        }
+        
+        .map-button.long-term {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+        
+        .map-button.scenario-epi {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            box-shadow: 0 4px 15px rgba(17, 153, 142, 0.4);
+        }
+        
+        .map-button.scenario-epi:hover {
+            box-shadow: 0 6px 20px rgba(17, 153, 142, 0.6);
+        }
+        
+        .button-label {
+            font-size: 0.85em;
+            opacity: 0.9;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        .composite-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+        
+        .composite-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .composite-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .info-box p {
+            color: #555;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+        
+        /* External Shiny (shinyapps.io) — link only; embedding is usually blocked by X-Frame-Options */
+        .shiny-box {
+            background: linear-gradient(135deg, #f5f7ff 0%, #eef4ff 100%);
+            border: 1px solid #c5d4f5;
+            border-radius: 12px;
+            padding: 1.25rem 1.35rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .shiny-box p {
+            color: #3a3f55;
+            margin: 0 0 0.75rem 0;
+            line-height: 1.5;
+        }
+        
+        .shiny-box .shiny-note {
+            font-size: 0.88rem;
+            color: #57606a;
+            margin: 0.75rem 0 0 0;
+        }
+        
+        .shiny-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #5a67d8 0%, #434190 100%);
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(90, 103, 216, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .shiny-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(90, 103, 216, 0.45);
+            text-decoration: none;
+        }
+    </style>
+  <link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>H5N1 Risk Map</h1>
+        <p class="subtitle">NYC Zip Code Risk Assessment - Component Maps</p>
+        
+    
+        
+        <div class="info-box">
+            <p><strong>About:</strong> This dashboard provides separate visualizations for each risk component contributing to the overall H5N1 risk score.</p>
+            <p><strong>Early Outbreak Risk:</strong> Components that indicate where the virus is most likely to enter the human population.</p>
+            <p><strong>Long-term Burden Risk:</strong> Components that indicate areas at risk for sustained transmission and poor outcomes.</p>
+            <p><strong>Modeled ZIP incidence:</strong> NYC compartment-model daily incidence apportioned to ZIPs using weights ∝ population × composite risk — <em>illustrative only</em>, not fitted spatial mixing. Opens as a <strong>peak-day snapshot</strong>; a full-window <strong>time slider</strong> is linked from that map (and documented in <code>docs/epi_model/scenario_zip_incidence_map.md</code>). Regenerate with <code>python3 src/epi_model/scenario_incidence_folium.py</code> from the repo root.</p>
+        </div>
+        
+        <div class="button-grid">
+            <a href="risk_component_bird_density.html" class="map-button early-outbreak">
+                Bird/Poultry Density Risk
+                <div class="button-label">Early Outbreak Risk</div>
+            </a>
+            
+            <a href="risk_component_water_proximity.html" class="map-button early-outbreak">
+                Water Proximity Risk
+                <div class="button-label">Early Outbreak Risk</div>
+            </a>
+            
+            <a href="risk_component_population_density.html" class="map-button long-term">
+                Population Density Risk
+                <div class="button-label">Long-term Burden Risk</div>
+            </a>
+            
+            <a href="risk_component_healthcare_capacity.html" class="map-button long-term">
+                Healthcare Capacity Risk
+                <div class="button-label">Long-term Burden Risk</div>
+            </a>
+            
+            <a href="risk_component_vulnerability_index.html" class="map-button long-term">
+                Social Vulnerability Risk
+                <div class="button-label">Long-term Burden Risk</div>
+            </a>
+            
+            <a href="scenario_incidence_pandemic_flu_snapshot.html" class="map-button scenario-epi">
+                Modeled ZIP incidence (snapshot)
+                <div class="button-label">SV–EAI–R–D — pandemic_flu · time slider linked on page</div>
+            </a>
+
+        </div>
+        
+        <div class="composite-link">
+            <a href="nyc_risk_map.html">View Composite Risk Map (All Components Combined)</a>
+        </div>
+   
+<div style="height: 50px;"></div>
+
+    <!-- Update href if you rename the shinyapps.io app slug -->
+        <div class="shiny-box">
+            <p><strong>Interactive compartment model (Shiny).</strong> Population incidence, sliders (R₀, CFR, reporting), and expected ward/ICU demand — same SV–EAI–R–D model as the repo.</p>
+            <a class="shiny-cta" href="https://nyinny.shinyapps.io/h5n1_nyc_incidence_hospital_demand/" target="_blank" rel="noopener noreferrer">Open Shiny app in new tab </a>
+        </div>
+ </div>
+
+</body>
+</html>
+
+
+

@@ -8,8 +8,8 @@
 !CNAME
 
 # Publish site content
-!risk_map/
-!risk_map/**
+!docs/
+!docs/**
 
 # Keep archive backups local-only
 archive/
