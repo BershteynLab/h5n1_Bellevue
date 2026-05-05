@@ -1,44 +1,15 @@
-# Virtual Environment
-venv/
-env/
-ENV/
-.venv
+# Website-only repo mode
+# Ignore everything by default, then allow only website files.
+*
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-*.egg-info/
-dist/
-build/
+# Keep gitignore itself and optional top-level docs/domain files
+!.gitignore
+!README.md
+!CNAME
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Publish site content
+!risk_map/
+!risk_map/**
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Data (optional - uncomment if you don't want to track data files)
-# data/raw/*
-# data/processed/*
-
-# Output files
-*.png
-*.html
-*.pdf
-!docs/*.pdf
-# Allow processed maps for sharing
-!data/processed/*.html
-!data/processed/*.png
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-
+# Keep archive backups local-only
+archive/
