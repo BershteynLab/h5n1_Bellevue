@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+@@FAVICON@@
     <style>
         :root {
             --bg-deep: #0c1222;
@@ -393,51 +393,20 @@
 
             <div class="section-label">Early outbreak risk</div>
             <div class="button-grid">
-                <a href="risk_component_bird_density.html" class="map-button early-outbreak">
-                    Bird / poultry density
-                    <span class="button-label">Reservoir &amp; exposure pressure</span>
-                </a>
-                <a href="risk_component_water_proximity.html" class="map-button early-outbreak">
-                    Water proximity
-                    <span class="button-label">Wild bird habitat &amp; wetlands</span>
-                </a>
+@@EARLY_GRID@@
             </div>
 
             <div class="section-label">Long-term burden</div>
             <div class="button-grid">
-                <a href="risk_component_population_density.html" class="map-button long-term">
-                    Population density
-                    <span class="button-label">Contact intensity</span>
-                </a>
-                <a href="risk_component_healthcare_capacity.html" class="map-button long-term">
-                    Healthcare capacity
-                    <span class="button-label">Stress &amp; surge margin</span>
-                </a>
-                <a href="risk_component_vulnerability_index.html" class="map-button long-term">
-                    Social vulnerability
-                    <span class="button-label">Socioeconomic factors</span>
-                </a>
+@@LONG_GRID@@
             </div>
-
-            <div class="section-label">Modeled incidence</div>
-            <div class="button-grid">
-                <a href="scenario_incidence_pandemic_flu_snapshot.html" class="map-button scenario-epi">
-                    ZIP incidence (snapshot)
-                    <span class="button-label">Pandemic flu scenario · time slider linked on page</span>
-                </a>
-            </div>
-
-            <div class="composite-wrap">
-                <div class="composite-link">
-                    <a href="nyc_risk_map.html">Composite risk map</a>
-                </div>
-            </div>
+@@SCENARIO_BLOCK@@
+@@COMPOSITE_BLOCK@@
 
             <div class="shiny-section">
-                <!-- Update href if you rename the shinyapps.io app slug -->
                 <div class="shiny-box">
                     <p><strong>Interactive compartment model (Shiny).</strong> Population incidence, sliders (R₀, CFR, reporting), and expected ward/ICU demand — same SV–EAI–R–D structure as the repository model.</p>
-                    <a class="shiny-cta" href="https://nyinny.shinyapps.io/h5n1_nyc_incidence_hospital_demand/" target="_blank" rel="noopener noreferrer">Open Shiny app</a>
+                    <a class="shiny-cta" href="@@SHINY_APP_URL@@" target="_blank" rel="noopener noreferrer">Open Shiny app</a>
                 </div>
             </div>
         </div>
