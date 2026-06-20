@@ -52,10 +52,65 @@
         
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+<style id="incidence-map-layout">
+.incidence-map-info {
+    position: fixed;
+    top: 10px;
+    right: 12px;
+    left: auto;
+    z-index: 9999;
+    background: #ffffffea;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    max-width: min(440px, 42vw);
+}
+[id^="slider_macro_element_"] {
+    position: fixed !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 28px !important;
+    top: auto !important;
+    transform: translateX(-50%);
+    z-index: 10000;
+    width: min(94vw, 860px) !important;
+    padding: 14px 22px 18px !important;
+    background: rgba(255, 255, 255, 0.97) !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 32px rgba(15, 23, 42, 0.2) !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+[id^="slider_macro_element_"] output {
+    display: block !important;
+    width: auto !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #0f172a !important;
+}
+[id^="slider_macro_element_"] input[type="range"] {
+    width: min(90vw, 780px) !important;
+    max-width: 100% !important;
+    height: 10px !important;
+    cursor: pointer !important;
+    accent-color: #3d5afe !important;
+    margin: 0 !important;
+}
+.leaflet-bottom.leaflet-left,
+.leaflet-bottom.leaflet-right {
+    margin-bottom: 108px;
+}
+</style>
 </head>
 <body>
     
-    <div style="position:fixed;top:12px;left:52px;z-index:9999;background:#ffffffea;padding:10px 14px;font-size:14px;border-radius:8px;border:1px solid #ccc;max-width:460px"><strong>Time-slider — illustrative ZIP incidence (pandemic_flu)</strong><br><span style="font-size:12px;color:#333">Drag slider for each modeled day (ordinal dates begin 2026-01-01 for display only). intrinsic NYC total × ZIP weights ∝ population × composite risk (see docs/epi_model/scenario_zip_incidence_map.md).</span><br><span style="font-size:12px;margin-top:5px;display:inline-block"><a href="scenario_incidence_pandemic_flu_snapshot.html" style="color:#3d5afe;font-weight:600">Peak-day snapshot →</a></span></div>
+    <div class="incidence-map-info"><strong>Time-slider — illustrative ZIP incidence (pandemic_flu)</strong><br><span style="font-size:12px;color:#333">Drag slider for each modeled day (ordinal dates begin 2026-01-01 for display only). intrinsic NYC total × ZIP weights ∝ population × composite risk (see docs/epi_model/scenario_zip_incidence_map.md).</span><br><span style="font-size:12px;margin-top:5px;display:inline-block"><a href="scenario_incidence_pandemic_flu_snapshot.html" style="color:#3d5afe;font-weight:600">Peak-day snapshot →</a></span></div>
     
             <div class="folium-map" id="map_5767fe3bd3c6368a8c851cd5761d43ee" ></div>
         
