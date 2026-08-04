@@ -388,7 +388,8 @@
                 <p><strong>Components:</strong> Each link opens a separate map for one risk factor in the composite H5N1 score.</p>
                 <p><strong>Early outbreak:</strong> Where spillover and introduction are more likely (avian exposure, waterfowl habitat).</p>
                 <p><strong>Long-term burden:</strong> Where sustained transmission and severe outcomes may concentrate.</p>
-                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Three scenarios are linked in severity order: <strong>Seasonal flu (best)</strong>, <strong>Pandemic Flu (moderate)</strong> (2009 H1N1 analogue), and <strong>COVID-like (worst)</strong>. Each opens a <strong>peak-day snapshot</strong>; a <strong>time-slider</strong> map is linked from that page. An optional <strong>incidence + hospital pins</strong> view overlays 46 DOH acute-care campuses from <code>data/hospitals/nyc_doh_hospitals_geocoded.csv</code>. See <code>docs/epi_model/scenario_zip_incidence_map.md</code>. Regenerate with <code>python3 src/epi_model/scenario_incidence_folium.py</code> from the repo root.</p>
+                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Three scenarios are linked in severity order: <strong>Seasonal flu (best)</strong>, <strong>Pandemic Flu (moderate)</strong> (2009 H1N1 analogue), and <strong>COVID-like (worst)</strong>. Each opens a <strong>peak-day snapshot</strong>; a <strong>time-slider</strong> map is linked from that page. <strong>Incidence + hospital pins</strong> overlays (moderate and worst) add 46 DOH acute-care campuses from <code>data/hospitals/nyc_doh_hospitals_geocoded.csv</code>. See <code>docs/epi_model/scenario_zip_incidence_map.md</code>.</p>
+                <p><strong>Hospital catchments:</strong> Separate from incidence — each ZIP assigned to its nearest DOH campus (v1 distance rule). See <code>docs/risk_map/ZIP_HOSPITAL_ASSIGNMENT.md</code>.</p>
             </div>
 
             <div class="section-label">Early outbreak risk</div>
@@ -427,19 +428,26 @@
                 </a>
                 <a href="scenario_incidence_pandemic_flu_snapshot.html" class="map-button scenario-epi">
                     Pandemic Flu (moderate)
-                    <span class="button-label">2009 H1N1 analogue · peak-day snapshot</span>
+                    <span class="button-label">2009 H1N1 analogue · peak-day snapshot · time slider on page</span>
                 </a>
                 <a href="scenario_incidence_worst_snapshot.html" class="map-button scenario-epi">
                     COVID-like (worst)
                     <span class="button-label">Worst-case scenario · peak-day snapshot</span>
                 </a>
                 <a href="scenario_incidence_pandemic_flu_hospitals_snapshot.html" class="map-button scenario-epi">
-                    Incidence + hospital pins
-                    <span class="button-label">Pandemic Flu (moderate) · 46 DOH acute-care campuses</span>
+                    Incidence + hospital pins (moderate)
+                    <span class="button-label">Pandemic Flu · 46 DOH acute-care campuses</span>
                 </a>
+                <a href="scenario_incidence_worst_hospitals_snapshot.html" class="map-button scenario-epi">
+                    Incidence + hospital pins (worst)
+                    <span class="button-label">COVID-like · 46 DOH acute-care campuses</span>
+                </a>
+            </div>
+            <div class="section-label">Hospital catchments</div>
+            <div class="button-grid">
                 <a href="zip_hospital_assignment_map.html" class="map-button scenario-epi">
                     ZIP → nearest hospital
-                    <span class="button-label">v1 assignment · distance choropleth</span>
+                    <span class="button-label">v1 assignment · distance choropleth (not incidence)</span>
                 </a>
             </div>
 
