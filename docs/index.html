@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+<link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
     <style>
         :root {
             --bg-deep: #0c1222;
@@ -388,7 +388,7 @@
                 <p><strong>Components:</strong> Each link opens a separate map for one risk factor in the composite H5N1 score.</p>
                 <p><strong>Early outbreak:</strong> Where spillover and introduction are more likely (avian exposure, waterfowl habitat).</p>
                 <p><strong>Long-term burden:</strong> Where sustained transmission and severe outcomes may concentrate.</p>
-                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Opens a <strong>peak-day snapshot</strong>; a <strong>time-slider</strong> map is linked from that page. An optional <strong>incidence + hospital pins</strong> view overlays 46 DOH acute-care campuses from <code>data/hospitals/nyc_doh_hospitals_geocoded.csv</code> (Anthony list). See <code>docs/epi_model/scenario_zip_incidence_map.md</code>. Regenerate with <code>python3 src/epi_model/scenario_incidence_folium.py</code> from the repo root.</p>
+                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Default links below are <strong>Pandemic Flu (2009 H1N1 analogue)</strong>; seasonal flu (“best”) and COVID-like (“worst”) maps are also linked when present. Opens a <strong>peak-day snapshot</strong>; a <strong>time-slider</strong> map is linked from that page. An optional <strong>incidence + hospital pins</strong> view overlays 46 DOH acute-care campuses from <code>data/hospitals/nyc_doh_hospitals_geocoded.csv</code> (Anthony list). See <code>docs/epi_model/scenario_zip_incidence_map.md</code>. Regenerate with <code>python3 src/epi_model/scenario_incidence_folium.py</code> from the repo root.</p>
             </div>
 
             <div class="section-label">Early outbreak risk</div>
@@ -419,19 +419,31 @@
                 </a>
             </div>
 
-            <div class="section-label">Modeled incidence</div>
+            <div class="section-label">Modeled incidence — Pandemic Flu (2009)</div>
             <div class="button-grid">
                 <a href="scenario_incidence_pandemic_flu_snapshot.html" class="map-button scenario-epi">
                     ZIP incidence (snapshot)
-                    <span class="button-label">Pandemic flu scenario · time slider linked on page</span>
+                    <span class="button-label">Pandemic Flu (2009 H1N1 analogue) · time slider on page</span>
                 </a>
                 <a href="scenario_incidence_pandemic_flu_hospitals_snapshot.html" class="map-button scenario-epi">
                     Incidence + hospital pins
-                    <span class="button-label">Same snapshot · 46 DOH acute-care campuses</span>
+                    <span class="button-label">Pandemic Flu (2009) · 46 DOH acute-care campuses</span>
                 </a>
                 <a href="zip_hospital_assignment_map.html" class="map-button scenario-epi">
                     ZIP → nearest hospital
                     <span class="button-label">v1 assignment · distance choropleth</span>
+                </a>
+                <a href="hospital_spillover_pandemic_flu_metrics.md" class="map-button scenario-epi">
+                    Hospital strain metrics
+                    <span class="button-label">Spillover · capacity timing · systems · vulnerable ZIPs</span>
+                </a>
+                <a href="scenario_incidence_best_snapshot.html" class="map-button scenario-epi">
+                    Seasonal flu (best)
+                    <span class="button-label">Best-case scenario · peak-day snapshot</span>
+                </a>
+                <a href="scenario_incidence_worst_snapshot.html" class="map-button scenario-epi">
+                    COVID-like (worst)
+                    <span class="button-label">Worst-case scenario · peak-day snapshot</span>
                 </a>
             </div>
 
@@ -442,7 +454,6 @@
             </div>
 
             <div class="shiny-section">
-                <!-- Update href if you rename the shinyapps.io app slug -->
                 <div class="shiny-box">
                     <p><strong>Interactive compartment model (Shiny).</strong> Population incidence, sliders (R₀, CFR, reporting), and expected ward/ICU demand — same SV–EAI–R–D structure as the repository model.</p>
                     <a class="shiny-cta" href="https://nyinny.shinyapps.io/h5n1_nyc_incidence_hospital_demand/" target="_blank" rel="noopener noreferrer">Open Shiny app</a>
