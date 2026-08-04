@@ -52,8 +52,34 @@
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+<style id="back-to-hub-nav">
+.incidence-map-nav, .risk-map-nav {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10002;
+    background: #ffffffee;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+}
+.incidence-map-nav a, .risk-map-nav a {
+    color: #1d4ed8;
+    text-decoration: none;
+}
+.incidence-map-nav a:hover, .risk-map-nav a:hover {
+    text-decoration: underline;
+}
+</style>
 </head>
 <body>
+<div class="risk-map-nav"><a href="index.html">← Back to risk map hub</a></div>
+
                 <style>
                     .risk-component-info {
                         position: absolute;
