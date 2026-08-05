@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenario comparison — hospital systems &amp; vulnerable ZIPs</title>
+<style>
+:root {
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --accent: #1d4ed8;
+}
+body {
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 28%, #f1f5f9 100%);
+  line-height: 1.45;
+}
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+.nav {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.nav a { color: var(--accent); text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0 0 0.4rem;
+}
+.lede { color: var(--muted); max-width: 46rem; margin: 0 0 1.5rem; }
+section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  overflow-x: auto;
+}
+h2 { font-size: 1.1rem; margin: 0 0 0.75rem; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  min-width: 720px;
+}
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.65rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  background: #f1f5f9;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+}
+tbody th {
+  font-weight: 600;
+  width: 14rem;
+  color: #1e293b;
+  background: #fafafa;
+}
+.note {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 1rem;
+}
+.note code { font-size: 0.84rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav"><a href="index.html">← Back to risk map hub</a></div>
+  <h1>Scenario comparison</h1>
+  <p class="lede">
+    Hospital systems most affected by case / admission load, and ZIPs with high modeled cases
+    relative to free acute-care beds at the assigned hospital. Columns are the three transmission scenarios.
+  </p>
+
+  <section>
+    <h2>Hospital systems</h2>
+    <table>
+<thead><tr><th>Metric</th><th>Seasonal flu (best)</th><th>Pandemic flu (moderate)</th><th>COVID-like (worst)</th></tr></thead>
+<tbody>
+<tr><th scope='row'>Top hospital system #1 (by catchment cases)</th><td>NYC H+H (5,580 cases · 45 ZIPs)</td><td>NYC H+H (135,802 cases · 45 ZIPs)</td><td>NYC H+H (1,274,280 cases · 45 ZIPs)</td></tr>
+<tr><th scope='row'>Top hospital system #2 (by catchment cases)</th><td>INDEPENDENT (2,899 cases · 21 ZIPs)</td><td>INDEPENDENT (70,552 cases · 21 ZIPs)</td><td>INDEPENDENT (662,021 cases · 21 ZIPs)</td></tr>
+<tr><th scope='row'>Top hospital system #3 (by catchment cases)</th><td>NEW YORK - PRESBYTERIAN (2,652 cases · 25 ZIPs)</td><td>NEW YORK - PRESBYTERIAN (64,559 cases · 25 ZIPs)</td><td>NEW YORK - PRESBYTERIAN (605,779 cases · 25 ZIPs)</td></tr>
+<tr><th scope='row'>Top hospital system #1 (by routed ward admissions)</th><td>NYC H+H (78 ward admits)</td><td>NYC H+H (13,422 ward admits)</td><td>NYC H+H (10,765 ward admits)</td></tr>
+<tr><th scope='row'>Top hospital system #2 (by routed ward admissions)</th><td>INDEPENDENT (40 ward admits)</td><td>NEW YORK - PRESBYTERIAN (9,149 ward admits)</td><td>NEW YORK - PRESBYTERIAN (7,940 ward admits)</td></tr>
+<tr><th scope='row'>Top hospital system #3 (by routed ward admissions)</th><td>NEW YORK - PRESBYTERIAN (37 ward admits)</td><td>MOUNT SINAI HEALTH SYSTEM (5,813 ward admits)</td><td>MOUNT SINAI HEALTH SYSTEM (5,066 ward admits)</td></tr>
+</tbody>
+</table>
+  </section>
+
+  <section>
+    <h2>Most vulnerable ZIPs</h2>
+    <table>
+<thead><tr><th>Metric</th><th>Seasonal flu (best)</th><th>Pandemic flu (moderate)</th><th>COVID-like (worst)</th></tr></thead>
+<tbody>
+<tr><th scope='row'>Most vulnerable ZIP #1 (high cases / low free acute beds)</th><td>10456: 315 cases · 29 free acute · ratio 10.9 · BRONXCARE CENTER FULTON MANDY (1164)</td><td>10456: 7,668 cases · 29 free acute · ratio 265.3 · BRONXCARE CENTER FULTON MANDY (1164)</td><td>10456: 71,948 cases · 29 free acute · ratio 2,489.5 · BRONXCARE CENTER FULTON MANDY (1164)</td></tr>
+<tr><th scope='row'>Most vulnerable ZIP #2 (high cases / low free acute beds)</th><td>11229: 223 cases · 24 free acute · ratio 9.2 · MAIMONIDES MIDWOOD COMMUNITY (1293)</td><td>11229: 5,423 cases · 24 free acute · ratio 224.1 · MAIMONIDES MIDWOOD COMMUNITY (1293)</td><td>11229: 50,882 cases · 24 free acute · ratio 2,102.6 · MAIMONIDES MIDWOOD COMMUNITY (1293)</td></tr>
+<tr><th scope='row'>Most vulnerable ZIP #3 (high cases / low free acute beds)</th><td>11230: 209 cases · 24 free acute · ratio 8.6 · MAIMONIDES MIDWOOD COMMUNITY (1293)</td><td>11230: 5,085 cases · 24 free acute · ratio 210.1 · MAIMONIDES MIDWOOD COMMUNITY (1293)</td><td>11230: 47,714 cases · 24 free acute · ratio 1,971.7 · MAIMONIDES MIDWOOD COMMUNITY (1293)</td></tr>
+<tr><th scope='row'>Most vulnerable ZIP #4 (high cases / low free acute beds)</th><td>10002: 251 cases · 30 free acute · ratio 8.5 · NYP: LOWER MANHATTAN (1437)</td><td>10002: 6,110 cases · 30 free acute · ratio 205.7 · NYP: LOWER MANHATTAN (1437)</td><td>10002: 57,329 cases · 30 free acute · ratio 1,930.3 · NYP: LOWER MANHATTAN (1437)</td></tr>
+<tr><th scope='row'>Most vulnerable ZIP #5 (high cases / low free acute beds)</th><td>11385: 259 cases · 34 free acute · ratio 7.6 · WYCKOFF HEIGHTS MC (1318)</td><td>11385: 6,306 cases · 34 free acute · ratio 186.0 · WYCKOFF HEIGHTS MC (1318)</td><td>11385: 59,174 cases · 34 free acute · ratio 1,745.6 · WYCKOFF HEIGHTS MC (1318)</td></tr>
+</tbody>
+</table>
+  </section>
+
+  <p class="note">
+    Catchment cases use v1 nearest-hospital ZIP assignment. Routed ward admissions include option-C
+    spillover to the next-nearest campus when free beds are exhausted. Free acute beds =
+    staffed × (1 − 79.8% ward occupancy). Vulnerability ratio = cumulative ZIP cases /
+    free acute beds at the assigned hospital. Illustrative ZIP apportionment
+    (population × composite risk), not spatial transmission.
+    Source CSVs: <code>scenario_comparison_systems.csv</code>,
+    <code>scenario_comparison_vulnerable_zips.csv</code>.
+    Regenerate with <code>python3 src/risk_map/scenario_comparison_table.py</code>.
+  </p>
+</div>
+</body>
+</html>

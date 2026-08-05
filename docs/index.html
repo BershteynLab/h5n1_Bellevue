@@ -389,7 +389,7 @@
                 <p><strong>Early outbreak:</strong> Where spillover and introduction are more likely (avian exposure, waterfowl habitat).</p>
                 <p><strong>Long-term burden:</strong> Where sustained transmission and severe outcomes may concentrate.</p>
                 <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Three scenarios are linked in severity order: <strong>Seasonal flu (best)</strong>, <strong>Pandemic Flu (moderate)</strong> (2009 H1N1 analogue), and <strong>COVID-like (worst)</strong>. Each opens a <strong>peak-day snapshot</strong>; a <strong>time-slider</strong> map is linked from that page. <strong>Incidence + hospital pins</strong> overlays (moderate and worst) add 46 DOH acute-care campuses from <code>data/hospitals/nyc_doh_hospitals_geocoded.csv</code>. See <code>docs/epi_model/scenario_zip_incidence_map.md</code>.</p>
-                <p><strong>Hospital catchments:</strong> Separate from incidence — each ZIP assigned to its nearest DOH campus (v1 distance rule). See <code>docs/risk_map/ZIP_HOSPITAL_ASSIGNMENT.md</code>.</p>
+                <p><strong>Hospital catchments &amp; comparison:</strong> Separate from incidence — each ZIP assigned to its nearest DOH campus (v1 distance rule), plus a cross-scenario table of top hospital systems and high-case / low-bed ZIPs. See <code>docs/risk_map/ZIP_HOSPITAL_ASSIGNMENT.md</code>.</p>
             </div>
 
             <div class="section-label">Early outbreak risk</div>
@@ -443,11 +443,15 @@
                     <span class="button-label">COVID-like · 46 DOH acute-care campuses</span>
                 </a>
             </div>
-            <div class="section-label">Hospital catchments</div>
+            <div class="section-label">Hospital catchments &amp; comparison</div>
             <div class="button-grid">
                 <a href="zip_hospital_assignment_map.html" class="map-button scenario-epi">
                     ZIP → nearest hospital
                     <span class="button-label">v1 assignment · distance choropleth (not incidence)</span>
+                </a>
+                <a href="scenario_comparison_table.html" class="map-button scenario-epi">
+                    Systems &amp; vulnerable ZIPs
+                    <span class="button-label">Table across best / moderate / worst scenarios</span>
                 </a>
             </div>
 
@@ -459,7 +463,7 @@
 
             <div class="shiny-section">
                 <div class="shiny-box">
-                    <p><strong>Interactive compartment model (Shiny).</strong> Population incidence, sliders (R₀, CFR, reporting), and expected ward/ICU demand — same SV–EAI–R–D structure as the repository model.</p>
+                    <p><strong>Interactive compartment model (Shiny).</strong> Population incidence, sliders (R₀, CFR, reporting), expected ward/ICU demand vs DOH free-bed capacity, and bed-strain KPIs (first day at capacity, cumulative cases, duration) — same SV–EAI–R–D structure as the repository model.</p>
                     <a class="shiny-cta" href="https://nyinny.shinyapps.io/h5n1_nyc_incidence_hospital_demand/" target="_blank" rel="noopener noreferrer">Open Shiny app</a>
                 </div>
             </div>
