@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H5N1 Risk Map — NYC ZIP dashboards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+    <style>
+        :root {
+            --bg-deep: #0c1222;
+            --bg-mid: #141b2d;
+            --surface: rgba(255, 255, 255, 0.97);
+            --surface-border: rgba(15, 23, 42, 0.08);
+            --text: #0f172a;
+            --text-muted: #475569;
+            --accent-early: #e11d48;
+            --accent-early-soft: rgba(225, 29, 72, 0.12);
+            --accent-long: #0284c7;
+            --accent-long-soft: rgba(2, 132, 199, 0.12);
+            --accent-model: #059669;
+            --accent-model-soft: rgba(5, 150, 105, 0.12);
+            --accent-shiny: #4f46e5;
+            --accent-shiny-soft: rgba(79, 70, 229, 0.1);
+            --radius-lg: 1.25rem;
+            --radius-md: 0.75rem;
+            --shadow-soft: 0 4px 24px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+            --shadow-lift: 0 20px 50px -18px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+            font-optical-sizing: auto;
+            min-height: 100vh;
+            color: var(--text);
+            background-color: var(--bg-deep);
+            background-image:
+                radial-gradient(ellipse 120% 80% at 50% -40%, rgba(79, 70, 229, 0.35), transparent),
+                radial-gradient(ellipse 80% 50% at 100% 100%, rgba(225, 29, 72, 0.12), transparent),
+                radial-gradient(ellipse 60% 40% at 0% 100%, rgba(2, 132, 199, 0.15), transparent);
+            padding: clamp(1.25rem, 4vw, 2.5rem);
+            line-height: 1.55;
+        }
+
+        .page-wrap {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(248, 250, 252, 0.75);
+            margin-bottom: 1rem;
+        }
+
+        .hero-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #34d399;
+            box-shadow: 0 0 12px #34d399;
+        }
+
+        .hero h1 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: clamp(2rem, 5vw, 2.85rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: #f8fafc;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            color: rgba(226, 232, 240, 0.85);
+            font-weight: 400;
+            max-width: 36rem;
+            margin: 0 auto;
+        }
+
+        .shell {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--surface-border);
+            box-shadow: var(--shadow-lift);
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .info-panel {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: 1.35rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-panel h2 {
+            font-family: "Fraunces", Georgia, serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-panel h2::before {
+            content: "";
+            display: inline-block;
+            width: 3px;
+            height: 1.1rem;
+            border-radius: 2px;
+            background: linear-gradient(180deg, var(--accent-early), var(--accent-long));
+        }
+
+        .info-panel p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin: 0.55rem 0;
+        }
+
+        .info-panel p strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .info-panel code {
+            font-family: ui-monospace, "Cascadia Code", monospace;
+            font-size: 0.8em;
+            background: #e2e8f0;
+            padding: 0.12em 0.35em;
+            border-radius: 4px;
+            color: #0f172a;
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin: 1.75rem 0 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .section-label:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-label::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #cbd5e1, transparent);
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr));
+            gap: 1rem;
+        }
+
+        .map-button {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: left;
+            padding: 1.2rem 1.25rem 1.15rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+        }
+
+        .map-button::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.18) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .map-button:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+        }
+
+        .map-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.35);
+        }
+
+        .map-button:active {
+            transform: translateY(-1px);
+        }
+
+        .map-button.early-outbreak {
+            background: linear-gradient(135deg, #be123c 0%, #9f1239 50%, #881337 100%);
+        }
+
+        .map-button.long-term {
+            background: linear-gradient(135deg, #0369a1 0%, #0284c7 45%, #0ea5e9 100%);
+        }
+
+        .map-button.scenario-epi {
+            background: linear-gradient(135deg, #047857 0%, #059669 45%, #10b981 100%);
+        }
+
+        .map-button.hospital-tools {
+            background: linear-gradient(135deg, #4338ca 0%, #4f46e5 45%, #6366f1 100%);
+        }
+
+        .button-label {
+            font-size: 0.78rem;
+            font-weight: 500;
+            opacity: 0.92;
+            margin-top: 0.45rem;
+            line-height: 1.35;
+        }
+
+        .composite-wrap {
+            margin-top: 1.1rem;
+            margin-bottom: 0.25rem;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .composite-link {
+            display: block;
+            text-align: center;
+        }
+
+        .composite-link a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.95rem 1.75rem;
+            background: var(--text);
+            color: #f8fafc !important;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: var(--radius-md);
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+        }
+
+        .composite-link a:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .composite-link a:focus-visible {
+            outline: 2px solid var(--accent-long);
+            outline-offset: 3px;
+        }
+
+        .composite-link a::after {
+            content: "→";
+            font-size: 1.1em;
+            opacity: 0.85;
+        }
+
+        .shiny-section {
+            margin-top: 2.25rem;
+        }
+
+        .shiny-box {
+            background: linear-gradient(135deg, var(--accent-shiny-soft) 0%, #f5f3ff 100%);
+            border: 1px solid rgba(79, 70, 229, 0.22);
+            border-radius: var(--radius-md);
+            padding: 1.35rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.1rem;
+        }
+
+        .shiny-box p {
+            color: #312e81;
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex: 1 1 18rem;
+        }
+
+        .shiny-box p strong {
+            font-weight: 700;
+        }
+
+        .shiny-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            background: var(--accent-shiny);
+            color: #fff !important;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.7rem 1.35rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .shiny-cta:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(79, 70, 229, 0.4);
+            text-decoration: none;
+        }
+
+        .shiny-cta:focus-visible {
+            outline: 2px solid #312e81;
+            outline-offset: 2px;
+        }
+
+        footer.site-foot {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.78rem;
+            color: rgba(148, 163, 184, 0.75);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .map-button,
+            .composite-link a,
+            .shiny-cta {
+                transition: none;
+            }
+            .map-button:hover,
+            .composite-link a:hover,
+            .shiny-cta:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrap">
+        <header class="hero">
+            <div class="hero-badge">NYC · ZIP-level</div>
+            <h1>H5N1 risk map</h1>
+            <p class="subtitle">Interactive component maps and modeled incidence — browse by theme below.</p>
+        </header>
+
+        <div class="shell">
+            <div class="info-panel">
+                <h2>About this dashboard</h2>
+                <p><strong>Components:</strong> Each link opens a separate map for one risk factor in the composite H5N1 score.</p>
+                <p><strong>Early outbreak:</strong> Where spillover and introduction are more likely (avian exposure, waterfowl habitat).</p>
+                <p><strong>Long-term burden:</strong> Where sustained transmission and severe outcomes may concentrate.</p>
+                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Three scenarios in severity order: <strong>Seasonal flu (best)</strong>, <strong>Pandemic Flu (moderate)</strong> (2009 H1N1 analogue), and <strong>COVID-like (worst)</strong>. Each opens a <strong>peak-day snapshot</strong>. <strong>Incidence + hospital pins</strong> overlays (moderate and worst) add 46 NYC acute-care hospital campuses. See <code>docs/epi_model/scenario_zip_incidence_map.md</code>.</p>
+                <p><strong>Hospital catchments &amp; comparison:</strong> Separate from incidence — each ZIP is assigned to its nearest hospital, plus a cross-scenario table of top hospital systems and high-case / low-bed ZIPs. See <code>docs/risk_map/ZIP_HOSPITAL_ASSIGNMENT.md</code>.</p>
+            </div>
+
+            <div class="section-label">Early outbreak risk</div>
+            <div class="button-grid">
+                <a href="risk_component_bird_density.html" class="map-button early-outbreak">
+                    Bird / poultry density
+                    <span class="button-label">Reservoir &amp; exposure pressure</span>
+                </a>
+                <a href="risk_component_water_proximity.html" class="map-button early-outbreak">
+                    Water proximity
+                    <span class="button-label">Wild bird habitat &amp; wetlands</span>
+                </a>
+            </div>
+
+            <div class="section-label">Long-term burden</div>
+            <div class="button-grid">
+                <a href="risk_component_population_density.html" class="map-button long-term">
+                    Population density
+                    <span class="button-label">Contact intensity</span>
+                </a>
+                <a href="risk_component_healthcare_capacity.html" class="map-button long-term">
+                    Healthcare capacity
+                    <span class="button-label">Stress &amp; surge margin</span>
+                </a>
+                <a href="risk_component_vulnerability_index.html" class="map-button long-term">
+                    Social vulnerability
+                    <span class="button-label">Socioeconomic factors</span>
+                </a>
+            </div>
+
+            <div class="composite-wrap">
+                <div class="composite-link">
+                    <a href="nyc_risk_map.html">Composite risk map</a>
+                </div>
+            </div>
+
+            <div class="section-label">Modeled ZIP incidence</div>
+            <div class="button-grid">
+                <a href="scenario_incidence_best_snapshot.html" class="map-button scenario-epi">
+                    Seasonal flu (best)
+                    <span class="button-label">Best-case scenario · peak-day snapshot</span>
+                </a>
+                <a href="scenario_incidence_pandemic_flu_snapshot.html" class="map-button scenario-epi">
+                    Pandemic Flu (moderate)
+                    <span class="button-label">2009 H1N1 analogue · peak-day snapshot</span>
+                </a>
+                <a href="scenario_incidence_worst_snapshot.html" class="map-button scenario-epi">
+                    COVID-like (worst)
+                    <span class="button-label">Worst-case scenario · peak-day snapshot</span>
+                </a>
+                <a href="scenario_incidence_pandemic_flu_hospitals_snapshot.html" class="map-button scenario-epi">
+                    Incidence + hospital pins (moderate)
+                    <span class="button-label">Pandemic Flu · 46 NYC acute-care hospitals</span>
+                </a>
+                <a href="scenario_incidence_worst_hospitals_snapshot.html" class="map-button scenario-epi">
+                    Incidence + hospital pins (worst)
+                    <span class="button-label">COVID-like · 46 NYC acute-care hospitals</span>
+                </a>
+            </div>
+            <div class="section-label">Hospital catchments &amp; comparison</div>
+            <div class="button-grid">
+                <a href="zip_hospital_assignment_map.html" class="map-button hospital-tools">
+                    ZIP → nearest hospital
+                    <span class="button-label">Each ZIP → closest hospital · distance map (not incidence)</span>
+                </a>
+                <a href="scenario_comparison_table.html" class="map-button hospital-tools">
+                    Systems &amp; vulnerable ZIPs
+                    <span class="button-label">Compare hospital systems and high-stress ZIPs across scenarios</span>
+                </a>
+            </div>
+
+            <div class="shiny-section">
+                <div class="shiny-box">
+                    <p><strong>Interactive compartment model (Shiny).</strong> Population incidence, sliders (R₀, CFR, reporting), expected ward/ICU demand vs DOH free-bed capacity, and bed-strain KPIs (first day at capacity, cumulative cases, duration) — same SV–EAI–R–D structure as the repository model.</p>
+                    <a class="shiny-cta" href="https://nyinny.shinyapps.io/h5n1_nyc_incidence_hospital_demand/" target="_blank" rel="noopener noreferrer">Open Shiny app</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-foot">Illustrative analyses — not clinical guidance.</footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenario comparison — hospital systems &amp; vulnerable ZIPs</title>
+<style>
+:root {
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #cbd5e1;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --accent: #1d4ed8;
+}
+body {
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 28%, #f1f5f9 100%);
+  line-height: 1.45;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+.nav {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.nav a { color: var(--accent); text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  margin: 0 0 0.4rem;
+}
+.lede { color: var(--muted); max-width: 48rem; margin: 0 0 1.25rem; }
+.shiny-cta {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
+  color: #312e81;
+  font-size: 0.92rem;
+}
+.shiny-cta a { color: var(--accent); font-weight: 600; }
+section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1rem 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  overflow-x: auto;
+}
+h2 { font-size: 1.1rem; margin: 0 0 0.35rem; }
+.section-note {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0 0 0.85rem;
+}
+.shared-assumptions {
+  margin: 0.85rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.shared-assumptions li { margin: 0.25rem 0; }
+.figure-wrap {
+  text-align: center;
+}
+.figure-wrap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 640px;
+}
+table.assumptions { min-width: 520px; }
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.55rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+thead th {
+  background: #f1f5f9;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+tbody th {
+  font-weight: 700;
+  color: #1e293b;
+  background: #fafafa;
+  white-space: nowrap;
+}
+td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.note {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 1rem;
+}
+</style>
+    <link rel="icon" type="image/png" href="icons8-duck-50.png" sizes="50x50">
+</head>
+<body>
+<div class="wrap">
+  <div class="nav"><a href="index.html">← Back to risk map hub</a></div>
+  <h1>Scenario comparison</h1>
+  <p class="lede">
+    Fixed illustrative runs under three transmission scenarios: citywide epidemic scale,
+    ward-bed pressure, then which hospital systems and ZIPs are most stressed.
+  </p>
+  <p class="shiny-cta">
+    These tables use the fixed scenario parameter sets below.
+    To test other parameter sets and see how citywide stress changes, open the
+    <a href="https://nyinny.shinyapps.io/h5n1_nyc_incidence_hospital_demand/" target="_blank" rel="noopener noreferrer">Shiny app</a>.
+  </p>
+
+  <section>
+    <h2>Model assumptions (fixed scenario parameters)</h2>
+    <p class="section-note">
+      Mid values from the project parameter registry. Shared occupancy and hospital-routing
+      rules apply to all three scenarios.
+    </p>
+    <table class='assumptions'>
+<thead><tr><th>Parameter</th><th>Seasonal flu (best)</th><th>Pandemic flu (moderate)</th><th>COVID-like (worst)</th></tr></thead>
+<tbody>
+<tr><th scope='row'>R₀</th><td class='num'>1.25</td><td class='num'>1.5</td><td class='num'>3</td></tr>
+<tr><th scope='row'>P(symptomatic | infection)</th><td class='num'>25%</td><td class='num'>50%</td><td class='num'>70%</td></tr>
+<tr><th scope='row'>Hospitalization | case</th><td class='num'>1.4%</td><td class='num'>10%</td><td class='num'>50%</td></tr>
+<tr><th scope='row'>ICU | hospitalization</th><td class='num'>17%</td><td class='num'>20%</td><td class='num'>30%</td></tr>
+<tr><th scope='row'>LOS ward (days)</th><td class='num'>6</td><td class='num'>7.5</td><td class='num'>9.5</td></tr>
+<tr><th scope='row'>LOS ICU (days)</th><td class='num'>7</td><td class='num'>8.5</td><td class='num'>11</td></tr>
+<tr><th scope='row'>CFR (symptomatic)</th><td class='num'>0.1%</td><td class='num'>0.1%</td><td class='num'>3%</td></tr>
+</tbody>
+</table>
+    <ul class="shared-assumptions">
+      <li>
+        Baseline occupancy: ward <strong>79.8%</strong>,
+        ICU <strong>79.4%</strong>
+        → city free beds ≈ <strong>3,226</strong> ward /
+        <strong>346</strong> ICU
+        (from NYC hospital bed counts).
+      </li>
+      <li>
+        Modeled cases are split across ZIP codes using population × composite risk
+        (illustrative, not a fitted spatial model).
+      </li>
+      <li>
+        Each ZIP is assigned to its nearest hospital. When that hospital’s free beds are full,
+        extra patients go to the next-closest hospital.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Citywide incidence and ward demand</h2>
+    <div class="figure-wrap">
+      <img src="scenario_comparison_epicurves.png"
+           alt="Citywide daily incidence and ward census for three scenarios vs free ward beds">
+    </div>
+  </section>
+
+  <section>
+    <h2>Hospital systems (by assigned ZIP cases)</h2>
+    <p class="section-note">
+      Hospital systems with the most cases among ZIP codes assigned to their hospitals.
+    </p>
+    <table class='systems'>
+<thead>
+<tr><th rowspan="2">Top hospital system</th><th colspan="2">Seasonal flu (best)</th><th colspan="2">Pandemic flu (moderate)</th><th colspan="2">COVID-like (worst)</th></tr>
+<tr><th>System</th><th>Cases</th><th>System</th><th>Cases</th><th>System</th><th>Cases</th></tr>
+</thead>
+<tbody>
+<tr><th scope='row'>#1</th><td>NYC H+H</td><td class='num'>5,589</td><td>NYC H+H</td><td class='num'>219,252</td><td>NYC H+H</td><td class='num'>1,274,374</td></tr>
+<tr><th scope='row'>#2</th><td>INDEPENDENT</td><td class='num'>2,904</td><td>INDEPENDENT</td><td class='num'>113,907</td><td>INDEPENDENT</td><td class='num'>662,069</td></tr>
+<tr><th scope='row'>#3</th><td>NEW YORK - PRESBYTERIAN</td><td class='num'>2,657</td><td>NEW YORK - PRESBYTERIAN</td><td class='num'>104,230</td><td>NEW YORK - PRESBYTERIAN</td><td class='num'>605,823</td></tr>
+</tbody>
+</table>
+  </section>
+
+  <section>
+    <h2>Hospital systems (by ward admissions, including overflow)</h2>
+    <p class="section-note">
+      Hospital systems with the most ward admissions after redirecting overflow from full hospitals.
+    </p>
+    <table class='systems'>
+<thead>
+<tr><th rowspan="2">Top hospital system</th><th colspan="2">Seasonal flu (best)</th><th colspan="2">Pandemic flu (moderate)</th><th colspan="2">COVID-like (worst)</th></tr>
+<tr><th>System</th><th>Ward admits</th><th>System</th><th>Ward admits</th><th>System</th><th>Ward admits</th></tr>
+</thead>
+<tbody>
+<tr><th scope='row'>#1</th><td>NYC H+H</td><td class='num'>78</td><td>NYC H+H</td><td class='num'>22,358</td><td>NYC H+H</td><td class='num'>10,812</td></tr>
+<tr><th scope='row'>#2</th><td>INDEPENDENT</td><td class='num'>40</td><td>NEW YORK - PRESBYTERIAN</td><td class='num'>14,616</td><td>NEW YORK - PRESBYTERIAN</td><td class='num'>7,963</td></tr>
+<tr><th scope='row'>#3</th><td>NEW YORK - PRESBYTERIAN</td><td class='num'>37</td><td>MOUNT SINAI HEALTH SYSTEM</td><td class='num'>9,451</td><td>MOUNT SINAI HEALTH SYSTEM</td><td class='num'>5,087</td></tr>
+</tbody>
+</table>
+  </section>
+
+  <section>
+    <h2>Most vulnerable (high cases / low free acute beds) ZIPs</h2>
+    <p class="section-note">
+      Rank order, ZIP, free beds, and assigned hospital are the same across scenarios.
+      Cases and ratios scale with each scenario.
+    </p>
+    <div class="figure-wrap" style="margin-bottom: 1rem;">
+      <img src="scenario_comparison_vulnerable_zips_map.png"
+           alt="Map of the most vulnerable ZIP codes and their assigned hospitals">
+    </div>
+    <table class='vulnerable'>
+<thead>
+<tr><th rowspan="2">#</th><th rowspan="2">ZIP</th><th rowspan="2">Free acute beds</th><th rowspan="2">Assigned hospital</th><th colspan="2">Seasonal flu (best)</th><th colspan="2">Pandemic flu (moderate)</th><th colspan="2">COVID-like (worst)</th></tr>
+<tr><th>Cases</th><th>Ratio</th><th>Cases</th><th>Ratio</th><th>Cases</th><th>Ratio</th></tr>
+</thead>
+<tbody>
+<tr><th scope='row'>#1</th><td>10456</td><td class='num'>29</td><td>BRONXCARE CENTER FULTON MANDY (1164)</td><td class='num'>316</td><td class='num'>10.9</td><td class='num'>12,379</td><td class='num'>428.3</td><td class='num'>71,953</td><td class='num'>2,489.7</td></tr>
+<tr><th scope='row'>#2</th><td>11229</td><td class='num'>24</td><td>MAIMONIDES MIDWOOD COMMUNITY (1293)</td><td class='num'>223</td><td class='num'>9.2</td><td class='num'>8,755</td><td class='num'>361.8</td><td class='num'>50,886</td><td class='num'>2,102.7</td></tr>
+<tr><th scope='row'>#3</th><td>11230</td><td class='num'>24</td><td>MAIMONIDES MIDWOOD COMMUNITY (1293)</td><td class='num'>209</td><td class='num'>8.6</td><td class='num'>8,210</td><td class='num'>339.2</td><td class='num'>47,718</td><td class='num'>1,971.8</td></tr>
+<tr><th scope='row'>#4</th><td>10002</td><td class='num'>30</td><td>NYP: LOWER MANHATTAN (1437)</td><td class='num'>251</td><td class='num'>8.5</td><td class='num'>9,864</td><td class='num'>332.1</td><td class='num'>57,334</td><td class='num'>1,930.4</td></tr>
+<tr><th scope='row'>#5</th><td>11385</td><td class='num'>34</td><td>WYCKOFF HEIGHTS MC (1318)</td><td class='num'>260</td><td class='num'>7.7</td><td class='num'>10,181</td><td class='num'>300.3</td><td class='num'>59,179</td><td class='num'>1,745.7</td></tr>
+</tbody>
+</table>
+  </section>
+
+  <p class="note">
+    Vulnerability ratio = cumulative ZIP cases ÷ free acute beds at the assigned hospital.
+    Free acute beds = staffed beds × (1 − ward occupancy). Illustrative analyses — not clinical guidance.
+  </p>
+</div>
+</body>
+</html>
