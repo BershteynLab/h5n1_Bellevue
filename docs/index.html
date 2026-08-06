@@ -242,6 +242,10 @@
             background: linear-gradient(135deg, #047857 0%, #059669 45%, #10b981 100%);
         }
 
+        .map-button.hospital-tools {
+            background: linear-gradient(135deg, #4338ca 0%, #4f46e5 45%, #6366f1 100%);
+        }
+
         .button-label {
             font-size: 0.78rem;
             font-weight: 500;
@@ -251,9 +255,10 @@
         }
 
         .composite-wrap {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #e2e8f0;
+            margin-top: 1.1rem;
+            margin-bottom: 0.25rem;
+            padding-top: 0;
+            border-top: none;
         }
 
         .composite-link {
@@ -388,8 +393,8 @@
                 <p><strong>Components:</strong> Each link opens a separate map for one risk factor in the composite H5N1 score.</p>
                 <p><strong>Early outbreak:</strong> Where spillover and introduction are more likely (avian exposure, waterfowl habitat).</p>
                 <p><strong>Long-term burden:</strong> Where sustained transmission and severe outcomes may concentrate.</p>
-                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Three scenarios are linked in severity order: <strong>Seasonal flu (best)</strong>, <strong>Pandemic Flu (moderate)</strong> (2009 H1N1 analogue), and <strong>COVID-like (worst)</strong>. Each opens a <strong>peak-day snapshot</strong>; a <strong>time-slider</strong> map is linked from that page. <strong>Incidence + hospital pins</strong> overlays (moderate and worst) add 46 DOH acute-care campuses from <code>data/hospitals/nyc_doh_hospitals_geocoded.csv</code>. See <code>docs/epi_model/scenario_zip_incidence_map.md</code>.</p>
-                <p><strong>Hospital catchments &amp; comparison:</strong> Separate from incidence — each ZIP assigned to its nearest DOH campus (v1 distance rule), plus a cross-scenario table of top hospital systems and high-case / low-bed ZIPs. See <code>docs/risk_map/ZIP_HOSPITAL_ASSIGNMENT.md</code>.</p>
+                <p><strong>Modeled ZIP incidence:</strong> Daily incidence from the SV–EAI–R–D compartment model, split across ZIPs with weights ∝ population × composite risk — <em>illustrative</em>, not a fitted spatial model. Three scenarios in severity order: <strong>Seasonal flu (best)</strong>, <strong>Pandemic Flu (moderate)</strong> (2009 H1N1 analogue), and <strong>COVID-like (worst)</strong>. Each opens a <strong>peak-day snapshot</strong>. <strong>Incidence + hospital pins</strong> overlays (moderate and worst) add 46 NYC acute-care hospital campuses. See <code>docs/epi_model/scenario_zip_incidence_map.md</code>.</p>
+                <p><strong>Hospital catchments &amp; comparison:</strong> Separate from incidence — each ZIP is assigned to its nearest hospital, plus a cross-scenario table of top hospital systems and high-case / low-bed ZIPs. See <code>docs/risk_map/ZIP_HOSPITAL_ASSIGNMENT.md</code>.</p>
             </div>
 
             <div class="section-label">Early outbreak risk</div>
@@ -420,6 +425,12 @@
                 </a>
             </div>
 
+            <div class="composite-wrap">
+                <div class="composite-link">
+                    <a href="nyc_risk_map.html">Composite risk map</a>
+                </div>
+            </div>
+
             <div class="section-label">Modeled ZIP incidence</div>
             <div class="button-grid">
                 <a href="scenario_incidence_best_snapshot.html" class="map-button scenario-epi">
@@ -428,7 +439,7 @@
                 </a>
                 <a href="scenario_incidence_pandemic_flu_snapshot.html" class="map-button scenario-epi">
                     Pandemic Flu (moderate)
-                    <span class="button-label">2009 H1N1 analogue · peak-day snapshot · time slider on page</span>
+                    <span class="button-label">2009 H1N1 analogue · peak-day snapshot</span>
                 </a>
                 <a href="scenario_incidence_worst_snapshot.html" class="map-button scenario-epi">
                     COVID-like (worst)
@@ -436,29 +447,23 @@
                 </a>
                 <a href="scenario_incidence_pandemic_flu_hospitals_snapshot.html" class="map-button scenario-epi">
                     Incidence + hospital pins (moderate)
-                    <span class="button-label">Pandemic Flu · 46 DOH acute-care campuses</span>
+                    <span class="button-label">Pandemic Flu · 46 NYC acute-care hospitals</span>
                 </a>
                 <a href="scenario_incidence_worst_hospitals_snapshot.html" class="map-button scenario-epi">
                     Incidence + hospital pins (worst)
-                    <span class="button-label">COVID-like · 46 DOH acute-care campuses</span>
+                    <span class="button-label">COVID-like · 46 NYC acute-care hospitals</span>
                 </a>
             </div>
             <div class="section-label">Hospital catchments &amp; comparison</div>
             <div class="button-grid">
-                <a href="zip_hospital_assignment_map.html" class="map-button scenario-epi">
+                <a href="zip_hospital_assignment_map.html" class="map-button hospital-tools">
                     ZIP → nearest hospital
-                    <span class="button-label">v1 assignment · distance choropleth (not incidence)</span>
+                    <span class="button-label">Each ZIP → closest hospital · distance map (not incidence)</span>
                 </a>
-                <a href="scenario_comparison_table.html" class="map-button scenario-epi">
+                <a href="scenario_comparison_table.html" class="map-button hospital-tools">
                     Systems &amp; vulnerable ZIPs
-                    <span class="button-label">Table across best / moderate / worst scenarios</span>
+                    <span class="button-label">Compare hospital systems and high-stress ZIPs across scenarios</span>
                 </a>
-            </div>
-
-            <div class="composite-wrap">
-                <div class="composite-link">
-                    <a href="nyc_risk_map.html">Composite risk map</a>
-                </div>
             </div>
 
             <div class="shiny-section">
